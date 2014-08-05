@@ -4,16 +4,54 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
-  <sprites name="sprites"/>
-  <backgrounds name="background"/>
+  <sounds name="sound">
+    <sound>sound\snd_badd</sound>
+  </sounds>
+  <sprites name="sprites">
+    <sprite>sprites\spr_floor_mask</sprite>
+    <sprite>sprites\spr_jumpthru</sprite>
+    <sprite>sprites\spr_slopeL_mask</sprite>
+    <sprite>sprites\spr_slopeL2_mask</sprite>
+    <sprite>sprites\spr_slopeR_mask</sprite>
+    <sprite>sprites\spr_slopeR2_mask</sprite>
+    <sprite>sprites\spr_larry</sprite>
+    <sprite>sprites\spr_dime</sprite>
+  </sprites>
+  <backgrounds name="background">
+    <background>background\bg_1</background>
+    <background>background\bg_fire</background>
+    <background>background\bg_mointa</background>
+    <background>background\bg_434</background>
+    <background>background\background6</background>
+    <background>background\background7</background>
+    <background>background\background8</background>
+  </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\approach.gml</script>
+    <script>scripts\checkBelow.gml</script>
+  </scripts>
+  <objects name="objects">
+    <object>objects\obj_debug</object>
+    <object>objects\obj_floor</object>
+    <object>objects\obj_jumpthru</object>
+    <object>objects\obj_moveable</object>
+    <object>objects\obj_player</object>
+    <object>objects\obj_slopeL</object>
+    <object>objects\obj_slopeL2_mask</object>
+    <object>objects\obj_slopeR</object>
+    <object>objects\obj_slopeR2_mask</object>
+    <object>objects\obj_dime</object>
+  </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
+    <room>rooms\rm_no_art</room>
+    <room>rooms\rm_art</room>
   </rooms>
-  <constants number="2">
-    <constant name="GM_build_date">41853.2247900347</constant>
-    <constant name="GM_version">'1.0.0.0'</constant>
+  <constants number="3">
+    <constant name="gee">"build2"</constant>
+    <constant name="GM_build_date">41856.5842909375</constant>
+    <constant name="GM_version">'1.0.0.3'</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
