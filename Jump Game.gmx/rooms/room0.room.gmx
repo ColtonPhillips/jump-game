@@ -10,7 +10,7 @@
   <persistent>0</persistent>
   <colour>0</colour>
   <showcolour>-1</showcolour>
-  <code>ini_open("chince.ini");
+  <code>/*ini_open("chince.ini");
 chince = ini_read_real(gee, "win", 0);
 ini_close();
 
@@ -26,6 +26,7 @@ else {
         audio_play_sound(snd_badd,1,false);
     }
 }
+*/
 background_hspeed[0] /= 10;
 background_hspeed[1] /= 10;
 background_hspeed[2] /= 10;

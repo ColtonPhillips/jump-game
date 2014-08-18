@@ -49,13 +49,14 @@ just_in_case_timer = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>just_in_case_timer++;
+            <string>/*just_in_case_timer++;
 if (!audio_is_playing(snd_badd) &amp;&amp; just_in_case_timer &gt; 100) {
 ini_open("chince.ini");
 ini_write_real(gee, "win", 1);
 ini_close();
 room_goto(rm_no_art);
 }
+*/
 </string>
           </argument>
         </arguments>
@@ -78,11 +79,12 @@ room_goto(rm_no_art);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>ini_open("chince.ini");
+            <string>/*ini_open("chince.ini");
 ini_write_real(gee, "win", 2);
 ini_close();
 audio_stop_all();
 room_goto(rm_art);
+*/
 </string>
           </argument>
         </arguments>

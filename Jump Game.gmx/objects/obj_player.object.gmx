@@ -139,31 +139,38 @@ if (!on_ground) {
 
     // mario style head hittin' handlin' (vspd is neg)
     // maybe there is a generic solution but this seems fast+safe OH GOD I MEAN SLOW
-    if (vspd &lt; 0 &amp;&amp; place_meeting(x,y + vspd,obj_floor))
+    //if (vspd &lt; 0 &amp;&amp; place_meeting(x,y + vspd,obj_floor))
+    if (vspd &lt; 0 &amp;&amp; place_meeting_top(0,vspd,obj_floor))
     {   
-        if (!place_meeting(x-1,y+ vspd,obj_floor)) {
+        //if (!place_meeting(x-1,y+ vspd,obj_floor)) {
+        if (!place_meeting_top(-1,vspd,obj_floor)) {
             x=x-1;
             hspd = 0;
         }
-        else if (!place_meeting(x+1,y+ vspd, obj_floor)) {
+        //else if (!place_meeting(x+1,y+ vspd, obj_floor)) {
+        else if (!place_meeting_top(1,vspd, obj_floor)) {
             x = x+1;
             hspd = 0;
         }
         else {
-            if (!place_meeting(x-2,y+ vspd,obj_floor)) {
+            //if (!place_meeting(x-2,y+ vspd,obj_floor)) {
+            if (!place_meeting_top(-2,vspd,obj_floor)) {
                 x=x-2;
                 hspd = 0;
             }
-            else if (!place_meeting(x+2,y+ vspd, obj_floor)) {
+            //else if (!place_meeting(x+2,y+ vspd, obj_floor)) {
+            else if (!place_meeting_top(2,vspd, obj_floor)) {
                 x = x+2;
                 hspd = 0;
             }
             else  {
-                if (!place_meeting(x-3,y+ vspd,obj_floor)) {
+                //if (!place_meeting(x-3,y+ vspd,obj_floor)) {
+                if (!place_meeting_top(-3,vspd,obj_floor)) {
                     x=x-3;
                     hspd = 0;
                 }
-                else if (!place_meeting(x+3,y+ vspd, obj_floor)) {
+                //else if (!place_meeting(x+3,y+ vspd, obj_floor)) {
+                else if (!place_meeting_top(3,vspd, obj_floor)) {
                     x = x+3;
                     hspd = 0;
                 }
@@ -176,10 +183,12 @@ if (!on_ground) {
 
 // the bug i dont like happens on off by one x's (maybe also 2's but less likely
 // i think it happens when you are going faster horizontal than vert kinda
-if (vspd&lt;=0 &amp;&amp; place_meeting(x,y + vspd-1,obj_floor)) {
+//if (vspd&lt;=0 &amp;&amp; place_meeting(x,y + vspd-1,obj_floor)) {
+if (vspd&lt;=0 &amp;&amp; place_meeting_top(0,vspd-1,obj_floor)) {
 var inst;
 
-inst = instance_place(x+hspd,y+vspd -4 , obj_floor);
+//inst = instance_place(x+hspd,y+vspd -4 , obj_floor);
+inst = instance_place_top(hspd,vspd-4,obj_floor);
     with (inst) {
         instance_destroy();
         }
@@ -302,6 +311,7 @@ if (!on_ground) image_index = 1;
 
 if (!flip) draw_sprite_ext(spr_larry,image_index,x,y,1,1,0,c_white,1);
 else draw_sprite_ext(spr_larry,image_index,x,y,-1,1,0,c_white,1);
+draw_bounding_box();
 </string>
           </argument>
         </arguments>

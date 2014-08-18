@@ -30,6 +30,18 @@
   <scripts name="scripts">
     <script>scripts\approach.gml</script>
     <script>scripts\checkBelow.gml</script>
+    <scripts name="draw">
+      <script>scripts\draw_bottom_collision_line.gml</script>
+      <script>scripts\draw_left_collision_line.gml</script>
+      <script>scripts\draw_top_collision_line.gml</script>
+      <script>scripts\draw_right_collision_line.gml</script>
+      <script>scripts\draw_bounding_box.gml</script>
+    </scripts>
+    <scripts name="collide">
+      <script>scripts\instance_place_top.gml</script>
+      <script>scripts\place_meeting_top.gml</script>
+      <script>scripts\place_meeting_below.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\obj_debug</object>
@@ -50,7 +62,7 @@
   </rooms>
   <constants number="3">
     <constant name="gee">"build3"</constant>
-    <constant name="GM_build_date">41857.1431026736</constant>
+    <constant name="GM_build_date">41869.0243929977</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
