@@ -98,8 +98,38 @@ var sign_v = sign(v);
 
 // I need to fix these bugs.
 
+repeat (abs(h))
+{
+    if (place_meeting(x + sign_h, y, obj_floor))
+    {
+        if (!place_meeting(x + sign_h, y - 1, obj_floor))
+        {
+            //Running up slopes
+            y -= 1;
+            x += sign_h;
+            slope = true;
+        }
+        else
+        {
+            //Hit a wall
+            collide = true;
+            break;
+        }
+    }
+    else
+    {
+        if (on_ground)
+        {
+           if (!place_meeting(x + sign_h, y + 1, obj_floor) &amp;&amp; place_meeting(x + sign_h, y + 2, obj_floor))
+                y += 1;
+        }
+        x += sign_h;  
+    }
+}
+
+
 // going right
-if (sign_h &gt;= 0) 
+/*if (sign_h &gt;= 0) 
 {
     repeat (abs(h))
     {
@@ -169,6 +199,7 @@ else // going left
     }
 
 }
+*/
 
 
 if (collide)

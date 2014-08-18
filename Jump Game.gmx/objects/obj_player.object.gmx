@@ -75,7 +75,12 @@ S_JUMP_HOLD     = 0.44;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0.15;
+            <string>if (keyboard_check_pressed(ord('A'))){x--;}
+if (keyboard_check_pressed(ord('D'))){x++;}
+if (keyboard_check_pressed(ord('W'))){y--;}
+if (keyboard_check_pressed(ord('S'))){y++;}
+
+image_speed = 0.15;
 
 var accel, fric;
 if (on_ground) {
