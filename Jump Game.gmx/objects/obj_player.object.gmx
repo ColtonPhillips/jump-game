@@ -77,8 +77,6 @@ S_JUMP_HOLD     = 0.44;
             <kind>1</kind>
             <string>image_speed = 0.15;
 
-/*      PLAYER INPUT EVAL       */
-
 var accel, fric;
 if (on_ground) {
     accel = S_RUN_ACCEL;
@@ -137,6 +135,7 @@ if (on_ground) {
 }
 if (!on_ground) {
 
+    // this whole bullscrap is suspect...
     // mario style head hittin' handlin' (vspd is neg)
     // maybe there is a generic solution but this seems fast+safe OH GOD I MEAN SLOW
     //if (vspd &lt; 0 &amp;&amp; place_meeting(x,y + vspd,obj_floor))
@@ -181,18 +180,17 @@ if (!on_ground) {
     }
 }
 
-// the bug i dont like happens on off by one x's (maybe also 2's but less likely
-// i think it happens when you are going faster horizontal than vert kinda
+// This is just a bug that looks like a feature...
 //if (vspd&lt;=0 &amp;&amp; place_meeting(x,y + vspd-1,obj_floor)) {
 if (vspd&lt;=0 &amp;&amp; place_meeting_top(0,vspd-1,obj_floor)) {
-var inst;
-
-//inst = instance_place(x+hspd,y+vspd -4 , obj_floor);
-inst = instance_place_top(hspd,vspd-4,obj_floor);
-    with (inst) {
-        instance_destroy();
-        }
-vspd = 0;
+    var inst;
+    
+    //inst = instance_place(x+hspd,y+vspd -4 , obj_floor);
+    inst = instance_place_top(hspd,vspd-4,obj_floor);
+        with (inst) {
+            instance_destroy();
+            }
+    vspd = 0;
 
 }
 </string>
