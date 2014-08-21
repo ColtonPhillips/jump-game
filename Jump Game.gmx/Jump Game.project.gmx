@@ -35,6 +35,9 @@
       <script>scripts\draw_left_collision_line.gml</script>
       <script>scripts\draw_top_collision_line.gml</script>
       <script>scripts\draw_right_collision_line.gml</script>
+      <script>scripts\draw_top_of_head.gml</script>
+      <script>scripts\draw_top_of_head_vspd.gml</script>
+      <script>scripts\draw_bottom_of_feet.gml</script>
       <script>scripts\draw_bounding_box.gml</script>
     </scripts>
     <scripts name="collide">
@@ -45,6 +48,9 @@
       <script>scripts\place_meeting_right.gml</script>
     </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fnt_debug</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_debug</object>
     <object>objects\obj_floor</object>
@@ -59,12 +65,13 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
+    <room>rooms\room3</room>
     <room>rooms\rm_no_art</room>
     <room>rooms\rm_art</room>
   </rooms>
   <constants number="3">
     <constant name="gee">"build3"</constant>
-    <constant name="GM_build_date">41872.0383389468</constant>
+    <constant name="GM_build_date">41872.1047098148</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

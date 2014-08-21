@@ -56,7 +56,7 @@ background_hspeed[5] /= 2;</code>
     <background visible="-1" foreground="0" name="bg_434" x="0" y="40" htiled="-1" vtiled="0" hspeed="-1" vspeed="0" stretch="0"/>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="-1" foreground="-1" name="bg_1" x="0" y="104" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
-    <background visible="-1" foreground="-1" name="background6" x="0" y="55" htiled="0" vtiled="0" hspeed="1" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="-1" name="background6" x="0" y="55" htiled="0" vtiled="0" hspeed="1" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
@@ -75,7 +75,7 @@ background_hspeed[5] /= 2;</code>
     <instance objName="obj_floor" x="96" y="160" name="inst_95C01E85" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpthru" x="128" y="96" name="inst_3C44A746" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeR" x="32" y="160" name="inst_F2539AA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="2512" y="144" name="inst_514A92A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="32" y="80" name="inst_514A92A7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpthru" x="128" y="160" name="inst_DAEF367D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpthru" x="192" y="64" name="inst_BEA4DA9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeR2_mask" x="0" y="160" name="inst_792E186E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -326,7 +326,7 @@ background_hspeed[5] /= 2;</code>
     <instance objName="obj_floor" x="2320" y="224" name="inst_527F3A6D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_floor" x="2336" y="224" name="inst_05375AAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_floor" x="2352" y="224" name="inst_FF7A23A3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_slopeL" x="2352" y="80" name="inst_D2032CDE" locked="0" code="" scaleX="13.9300003051758" scaleY="12" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeL" x="2368" y="128" name="inst_D2032CDE" locked="0" code="" scaleX="13.9300003051758" scaleY="12" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpthru" x="1648" y="48" name="inst_641EEF73" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpthru" x="1664" y="64" name="inst_F601D0F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpthru" x="1696" y="32" name="inst_4AC2DA4D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -678,6 +678,7 @@ background_hspeed[5] /= 2;</code>
     <instance objName="obj_jumpthru" x="4032" y="144" name="inst_9C878D19" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpthru" x="4016" y="144" name="inst_D687ECAC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_jumpthru" x="4048" y="144" name="inst_0EBCC270" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_debug" x="368" y="80" name="inst_74725655" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

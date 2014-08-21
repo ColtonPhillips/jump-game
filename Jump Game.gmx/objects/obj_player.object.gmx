@@ -40,7 +40,7 @@ S_GRAVITY       = 0.72;      //Accel. due to gravity (pixels/step*step)
 S_RUN_ACCEL     = 0.042;      //Accel. from running on ground (pixels/step*step)
 S_RUN_FRIC      = 0.04;      //Friction on the ground (pixels/step*step)
 S_AIR_ACCEL     = 0.04;      //Accel. from running in the air (pixels/step*step)
-S_AIR_FRIC      = 0.12;      //Friction in the air (pixels/step*step)
+S_AIR_FRIC      = 0.01;      //Friction in the air (pixels/step*step)
 S_JUMP_SPEED    = -6.1;
 //S_DJUMP_SPEED   = -4.5;       //Double jump speed
 S_MAX_H         = 1.6;        //Max horizontal speed
@@ -93,7 +93,7 @@ if (on_ground) {
 
 var my_max = S_MAX_H;
 //if (keyboard_check(vk_down)) {
-if (gamepad_button_check(0,gp_face3)) {
+if (gamepad_button_check(0,gp_face3) || gamepad_button_value(0,gp_shoulderrb) &gt; 0) {
     my_max = S_MAX_H*2;
     image_speed*=2;
 }
@@ -149,7 +149,10 @@ if (!on_ground) {
     // mario style head hittin' handlin' (vspd is neg)
     // maybe there is a generic solution but this seems fast+safe OH GOD I MEAN SLOW
     //if (vspd &lt; 0 &amp;&amp; place_meeting(x,y + vspd,obj_floor))
-    if (vspd &lt; 0 &amp;&amp; place_meeting_top(0,vspd,obj_floor))
+
+     
+    
+    if (abs(hspd) &lt; 1 &amp;&amp; vspd &lt; 0 &amp;&amp; place_meeting_top(0,vspd,obj_floor))
     {   
         //if (!place_meeting(x-1,y+ vspd,obj_floor)) {
         if (!place_meeting_top(-1,vspd,obj_floor)) {
@@ -188,15 +191,17 @@ if (!on_ground) {
             }
         }
     }
+    
+    
 }
 
 // This is just a bug that looks like a feature...
 //if (vspd&lt;=0 &amp;&amp; place_meeting(x,y + vspd-1,obj_floor)) {
-if (vspd&lt;=0 &amp;&amp; place_meeting_top(0,vspd-1,obj_floor)) {
+if (!on_ground &amp;&amp; place_meeting_top(0,-1,obj_floor)) {
     var inst;
     
     //inst = instance_place(x+hspd,y+vspd -4 , obj_floor);
-    inst = instance_place_top(hspd,vspd-4,obj_floor);
+    inst = instance_place_top(0,-1,obj_floor);
         with (inst) {
             instance_destroy();
             }

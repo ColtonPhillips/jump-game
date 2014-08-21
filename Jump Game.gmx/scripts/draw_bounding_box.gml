@@ -6,3 +6,6 @@ draw_point_colour(bbox_left,bbox_top,c_white);
 draw_point_colour(bbox_left,bbox_bottom,c_white);
 draw_point_colour(bbox_right,bbox_top,c_white);
 draw_point_colour(bbox_right,bbox_bottom,c_white);
+draw_top_of_head();
+draw_bottom_of_feet();
+draw_top_of_head_vspd();
