@@ -38,8 +38,8 @@ event_inherited();
 //tweaked if needed).
 S_GRAVITY       = 0.72;      //Accel. due to gravity (pixels/step*step)
 S_RUN_ACCEL     = 0.042;      //Accel. from running on ground (pixels/step*step)
-S_RUN_FRIC      = 0.04;      //Friction on the ground (pixels/step*step)
-S_AIR_ACCEL     = 0.05;      //Accel. from running in the air (pixels/step*step)
+S_RUN_FRIC      = 0.045;      //Friction on the ground (pixels/step*step)
+S_AIR_ACCEL     = 0.08;      //Accel. from running in the air (pixels/step*step)
 S_AIR_FRIC      = 0.01;      //Friction in the air (pixels/step*step)
 S_JUMP_SPEED    = -6.1;
 //S_DJUMP_SPEED   = -4.5;       //Double jump speed
