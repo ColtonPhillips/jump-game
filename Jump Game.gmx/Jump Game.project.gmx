@@ -16,6 +16,7 @@
     <sprite>sprites\spr_slopeR2_mask</sprite>
     <sprite>sprites\spr_larry</sprite>
     <sprite>sprites\spr_dime</sprite>
+    <sprite>sprites\spr_goomba</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_1</background>
@@ -47,6 +48,7 @@
       <script>scripts\place_meeting_left.gml</script>
       <script>scripts\place_meeting_right.gml</script>
     </scripts>
+    <script>scripts\chance.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
@@ -62,6 +64,7 @@
     <object>objects\obj_slopeR</object>
     <object>objects\obj_slopeR2_mask</object>
     <object>objects\obj_dime</object>
+    <object>objects\obj_goomba</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
@@ -71,7 +74,7 @@
   </rooms>
   <constants number="3">
     <constant name="gee">"build3"</constant>
-    <constant name="GM_build_date">41873.1775425463</constant>
+    <constant name="GM_build_date">41873.2057725579</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
