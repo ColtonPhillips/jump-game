@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_moveable</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="3" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,20 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check_pressed(ord('1'))) {
-    room_speed /= 2;
-}
-
-if (keyboard_check_pressed(ord('2'))) {
-    room_speed *= 2;
-    if (room_speed &gt; 60) {room_speed = 60;}
-}
+            <string>event_inherited();
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="53">
+    <event eventtype="7" enumb="11">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -55,13 +48,13 @@ if (keyboard_check_pressed(ord('2'))) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(mouse_x,mouse_y,obj_goomba);
+            <string>vspd = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="0">
+    <event eventtype="7" enumb="10">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -78,39 +71,7 @@ if (keyboard_check_pressed(ord('2'))) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_number( obj_player )) {
-
-    draw_set_font( fnt_debug );
-    draw_set_colour(c_white);
-    draw_set_halign( fa_left );
-    draw_set_valign( fa_center );
-
-    var _x = view_xview[0] + 3;
-    var _y = view_yview[0] + 8;    
-    
-    draw_text( _x, _y, "fps:" ); 
-    draw_text( _x + 40, _y, string( fps ) );
-
-    draw_text( _x, _y + 10, "hspd:" ); 
-    draw_text( _x + 40, _y + 10, string( obj_player.hspd ) );
-    
-    draw_text( _x, _y + 20, "vspd:" );
-    draw_text( _x + 40, _y + 20, string( obj_player.vspd ) );
-    
-    draw_text( _x, _y + 30, "x:" );
-    draw_text( _x + 40, _y + 30, string( obj_player.x ) );
-    
-    draw_text( _x, _y + 40, "y:" );
-    draw_text( _x + 40, _y + 40, string( obj_player.y ) );    
-
-    draw_text( _x, _y + 50, "on_ground:" );
-    draw_text( _x + 80, _y + 50, string( obj_player.on_ground ) );   
-
-    draw_text( _x, _y + 60, "v_counter:" );
-    draw_text( _x + 80, _y + 60, string( obj_player.v_counter ) );  
-    
-    
-}
+            <string>hspd = 0;
 </string>
           </argument>
         </arguments>

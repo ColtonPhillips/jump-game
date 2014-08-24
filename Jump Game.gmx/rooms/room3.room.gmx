@@ -72,7 +72,7 @@ background_hspeed[5] /= 2;</code>
   </views>
   <instances>
     <instance objName="obj_debug" x="96" y="48" name="inst_C14B95F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="160" y="128" name="inst_737910B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="80" y="80" name="inst_737910B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_floor" x="0" y="96" name="inst_582789E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_floor" x="0" y="112" name="inst_F311BFCB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_floor" x="0" y="128" name="inst_77427F54" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -322,6 +322,16 @@ background_hspeed[5] /= 2;</code>
     <instance objName="obj_slopeR" x="1024" y="192" name="inst_D514CCBF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeR" x="1040" y="176" name="inst_B9EEAD1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slopeR" x="1040" y="192" name="inst_91877264" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeR" x="224" y="160" name="inst_512C5436" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeR" x="240" y="144" name="inst_67D864F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeL" x="256" y="144" name="inst_E87E8E82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeL" x="272" y="160" name="inst_5D2C78DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeL2_mask" x="32" y="144" name="inst_477725D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeR2_mask" x="80" y="144" name="inst_4956F397" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeR2_mask" x="112" y="128" name="inst_040A687E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeL2_mask" x="144" y="128" name="inst_5E125C7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeL2_mask" x="176" y="144" name="inst_6EB54FA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_slopeL2_mask" x="208" y="160" name="inst_6F70950A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

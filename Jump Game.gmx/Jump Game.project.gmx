@@ -15,6 +15,7 @@
     <sprite>sprites\spr_larry</sprite>
     <sprite>sprites\spr_dime</sprite>
     <sprite>sprites\spr_goomba</sprite>
+    <sprite>sprites\spr_fireball</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_1</background>
@@ -41,12 +42,14 @@
     </scripts>
     <scripts name="collide">
       <script>scripts\instance_place_top.gml</script>
+      <script>scripts\instance_place_bottom.gml</script>
       <script>scripts\place_meeting_top.gml</script>
       <script>scripts\place_meeting_below.gml</script>
       <script>scripts\place_meeting_left.gml</script>
       <script>scripts\place_meeting_right.gml</script>
     </scripts>
     <script>scripts\chance.gml</script>
+    <script>scripts\move_away.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
@@ -63,6 +66,8 @@
     <object>objects\obj_slopeR2_mask</object>
     <object>objects\obj_dime</object>
     <object>objects\obj_goomba</object>
+    <object>objects\obj_enemy</object>
+    <object>objects\obj_fireball</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
@@ -72,7 +77,7 @@
   </rooms>
   <constants number="3">
     <constant name="gee">"build3"</constant>
-    <constant name="GM_build_date">41873.2301987384</constant>
+    <constant name="GM_build_date">41875.0664874537</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
