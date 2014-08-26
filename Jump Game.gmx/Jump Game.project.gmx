@@ -47,6 +47,9 @@
     </scripts>
     <script>scripts\chance.gml</script>
     <script>scripts\move_away.gml</script>
+    <script>scripts\included_file_to_string.gml</script>
+    <script>scripts\print_list.gml</script>
+    <script>scripts\print_map.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
