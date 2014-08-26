@@ -22,9 +22,6 @@
     <background>background\bg_fire</background>
     <background>background\bg_mointa</background>
     <background>background\bg_434</background>
-    <background>background\background6</background>
-    <background>background\background7</background>
-    <background>background\background8</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -77,7 +74,7 @@
   </rooms>
   <constants number="3">
     <constant name="gee">"build3"</constant>
-    <constant name="GM_build_date">41875.0664874537</constant>
+    <constant name="GM_build_date">41877.0903951968</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

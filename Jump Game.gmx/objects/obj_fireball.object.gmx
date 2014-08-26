@@ -73,6 +73,9 @@ if (chance(6)) {
 if (image_alpha &lt; 0.4) {
     instance_destroy();
 }
+if (place_meeting(x,y,obj_floor)) {
+    move_away(obj_floor,1);
+}
 </string>
           </argument>
         </arguments>

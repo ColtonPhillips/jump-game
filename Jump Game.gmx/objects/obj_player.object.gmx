@@ -92,7 +92,7 @@ if (on_ground) {
 }
 
 if (gamepad_button_check_pressed(0,gp_face3) &amp;&amp; instance_number(obj_fireball) &lt; 3) {
-    var fb = instance_create(x + 4*hspd,y + 4*vspd ,obj_fireball);
+    var fb = instance_create(x,y ,obj_fireball);
     with (fb) {
         hspd = 1.5 * other.hspd;
         vspd = 1.1 * other.vspd;
@@ -102,7 +102,7 @@ if (gamepad_button_check_pressed(0,gp_face3) &amp;&amp; instance_number(obj_fire
 if (abs(gamepad_axis_value(0,gp_axisrh)) &gt; 0.5 || abs(gamepad_axis_value(0,gp_axisrv)) &gt; 0.5) {
     if (!just_shot &amp;&amp; instance_number(obj_fireball) &lt; 3) {
     just_shot = true;
-        var fb = instance_create(x + 4*hspd,y + 4*vspd ,obj_fireball);
+        var fb = instance_create(x,y,obj_fireball);
         with (fb) {
             var _dir = point_direction(0, 0, gamepad_axis_value(0,gp_axisrh), gamepad_axis_value(0,gp_axisrv))
             hspd = lengthdir_x(3,_dir);
