@@ -76,6 +76,12 @@ if (image_alpha &lt; 0.4) {
 if (place_meeting(x,y,obj_floor)) {
     move_away(obj_floor,1);
 }
+
+var inst = instance_place(x,y,obj_enemy);
+if (inst != noone) {
+    move_away_impulse(inst,4);
+    with (inst) { instance_destroy();}
+}
 </string>
           </argument>
         </arguments>

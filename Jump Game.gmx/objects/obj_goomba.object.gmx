@@ -63,11 +63,7 @@ S_JUMP_HOLD     = 0.44;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_place(x,y,obj_fireball)) {
-    instance_destroy();
-}
-
-if (chance(100)) {hspd = random_range(-1,1);}
+            <string>if (chance(100)) {hspd = random_range(-1,1);}
 
 //Gravity
 vspd = approach( vspd, S_MAX_V, S_GRAVITY );

@@ -47,6 +47,7 @@
     </scripts>
     <script>scripts\chance.gml</script>
     <script>scripts\move_away.gml</script>
+    <script>scripts\move_away_impulse.gml</script>
     <script>scripts\included_file_to_string.gml</script>
     <script>scripts\print_list.gml</script>
     <script>scripts\print_map.gml</script>
@@ -77,7 +78,7 @@
   </rooms>
   <constants number="3">
     <constant name="gee">"build3"</constant>
-    <constant name="GM_build_date">41877.0903951968</constant>
+    <constant name="GM_build_date">41878.1457746759</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
