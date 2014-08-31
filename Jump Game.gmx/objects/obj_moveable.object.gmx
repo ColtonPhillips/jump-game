@@ -44,6 +44,14 @@ v_counter = 0;
 
 //This variables holds whether the object is sitting on solid ground.
 on_ground = false;
+
+// used in end step
+h = 0;
+v = 0;
+slope = false;
+collide = false;
+sign_h = 1;
+sign_v = 1;
 </string>
           </argument>
         </arguments>
@@ -66,9 +74,7 @@ on_ground = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var h, v, collide, slope;
-
-//Add to the counters, then get the h and v (pixels to move this step) from them.
+            <string>//Add to the counters, then get the h and v (pixels to move this step) from them.
 h_counter += hspd;
 v_counter += vspd;
 h = round( h_counter );
@@ -85,19 +91,10 @@ v_counter -= v;
 collide = false;
 slope = false;
 
-var sign_h = sign(h);
-var sign_v = sign(v);
+sign_h = sign(h);
+sign_v = sign(v);
 
-// okay. hear me out. this is dumb. and bad. its gonna be copy paste code up on here
-
-// but I need to. okay. I just do.
-
-// sigh i mean. god. Okay. I'll change it back later if I want to but I NEED TO FIND OUT 
-
-// What I'm actually supposed to do 
-
-// I need to fix these bugs.
-
+// probably could re-write with place_meeting_left, etc.
 repeat (abs(h))
 {
     if (place_meeting(x + sign_h, y, obj_floor))
@@ -127,81 +124,6 @@ repeat (abs(h))
     }
 }
 
-
-// going right
-/*if (sign_h &gt;= 0) 
-{
-    repeat (abs(h))
-    {
-        //if (place_meeting(x + sign_h, y, obj_floor))
-        if (place_meeting_right(sign_h, 0, obj_floor))
-        {
-            //if (!place_meeting(x + sign_h, y - 1, obj_floor))
-            if (!place_meeting_right(sign_h, -1, obj_floor))
-            {
-                //Running up slopes
-                y -= 1;
-                x += sign_h;
-                slope = true;
-            }
-            else
-            {
-                //Hit a wall
-                collide = true;
-                break;
-            }
-        }
-        else
-        {
-            if (on_ground)
-            {
-                //if (!place_meeting(x + sign_h, y + 1, obj_floor) &amp;&amp; place_meeting(x + sign_h, y + 2, obj_floor))
-                if (!place_meeting_right(sign_h, 1, obj_floor) &amp;&amp; place_meeting_right(sign_h, 2, obj_floor))
-                    y += 1;
-            }
-            x += sign_h;  
-        }
-    }
-
-}
-else // going left 
-{
-    repeat (abs(h))
-    {
-        //if (place_meeting(x + sign_h, y, obj_floor))
-        if (place_meeting_left(sign_h, 0, obj_floor))
-        {
-            //if (!place_meeting(x + sign_h, y - 1, obj_floor))
-            if (!place_meeting_left(sign_h, -1, obj_floor))
-            {
-                //Running up slopes
-                y -= 1;
-                x += sign_h;
-                slope = true;
-            }
-            else
-            {
-                //Hit a wall
-                collide = true;
-                break;
-            }
-        }
-        else
-        {
-            if (on_ground)
-            {
-                //if (!place_meeting(x + sign_h, y + 1, obj_floor) &amp;&amp; place_meeting(x + sign_h, y + 2, obj_floor))
-                if (!place_meeting_left(sign_h, 1, obj_floor) &amp;&amp; place_meeting_left(sign_h, 2, obj_floor))
-                    y += 1;
-            }
-            x += sign_h;  
-        }
-    }
-
-}
-*/
-
-
 if (collide)
     event_perform(ev_other, ev_user0);
     
@@ -218,16 +140,18 @@ repeat (abs(v))
             collide = true;
             break;
         }
-        else
+        else {
             y += sign_v;
+        }
     }
-    else if (checkBelow())
+    else if (check_below())
     {
         collide = true;
         break;
     }
-    else
+    else {
         y += sign_v;
+    }
 }
 
 if (collide)
@@ -254,7 +178,7 @@ if (collide)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>on_ground = checkBelow();
+            <string>on_ground = check_below();
 
 </string>
           </argument>

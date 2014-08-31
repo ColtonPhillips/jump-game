@@ -34,7 +34,6 @@
     <sprite>sprites\spr_slopeR_mask</sprite>
     <sprite>sprites\spr_slopeR2_mask</sprite>
     <sprite>sprites\spr_larry</sprite>
-    <sprite>sprites\spr_dime</sprite>
     <sprite>sprites\spr_goomba</sprite>
     <sprite>sprites\spr_fireball</sprite>
   </sprites>
@@ -43,13 +42,13 @@
     <background>background\bg_fire</background>
     <background>background\bg_mointa</background>
     <background>background\bg_434</background>
-    <background>background\bg_277</background>
-    <background>background\bg_rocks</background>
+    <backgrounds name="levels">
+      <background>background\bg_277</background>
+      <background>background\bg_rocks</background>
+    </backgrounds>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\approach.gml</script>
-    <script>scripts\checkBelow.gml</script>
     <scripts name="draw">
       <script>scripts\draw_bottom_collision_line.gml</script>
       <script>scripts\draw_left_collision_line.gml</script>
@@ -62,20 +61,35 @@
     </scripts>
     <scripts name="collide">
       <script>scripts\instance_place_top.gml</script>
+      <script>scripts\instance_place_right.gml</script>
       <script>scripts\instance_place_bottom.gml</script>
       <script>scripts\place_meeting_top.gml</script>
       <script>scripts\place_meeting_below.gml</script>
       <script>scripts\place_meeting_left.gml</script>
       <script>scripts\place_meeting_right.gml</script>
+      <script>scripts\check_below.gml</script>
     </scripts>
-    <script>scripts\chance.gml</script>
-    <script>scripts\move_away.gml</script>
-    <script>scripts\move_away_impulse.gml</script>
-    <script>scripts\included_file_to_string.gml</script>
-    <script>scripts\print_list.gml</script>
-    <script>scripts\print_map.gml</script>
-    <script>scripts\print.gml</script>
-    <script>scripts\tileset_index_from_gid.gml</script>
+    <scripts name="math">
+      <script>scripts\chance.gml</script>
+      <script>scripts\approach.gml</script>
+    </scripts>
+    <scripts name="printing">
+      <script>scripts\print.gml</script>
+      <script>scripts\print_map.gml</script>
+      <script>scripts\print_list.gml</script>
+    </scripts>
+    <scripts name="move">
+      <script>scripts\move_away_forced.gml</script>
+      <script>scripts\move_away_impulse.gml</script>
+      <script>scripts\move_to_start.gml</script>
+    </scripts>
+    <scripts name="tiling">
+      <script>scripts\tileset_index_from_gid.gml</script>
+    </scripts>
+    <scripts name="file">
+      <script>scripts\included_file_to_string.gml</script>
+    </scripts>
+    <script>scripts\fall_off_world_destroyer.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
@@ -87,25 +101,23 @@
     <object>objects\obj_moveable</object>
     <object>objects\obj_player</object>
     <object>objects\obj_slopeL</object>
-    <object>objects\obj_slopeL2_mask</object>
+    <object>objects\obj_slopeL2</object>
     <object>objects\obj_slopeR</object>
-    <object>objects\obj_slopeR2_mask</object>
-    <object>objects\obj_dime</object>
+    <object>objects\obj_slopeR2</object>
     <object>objects\obj_goomba</object>
     <object>objects\obj_enemy</object>
     <object>objects\obj_fireball</object>
     <object>objects\obj_tile_adder</object>
+    <object>objects\obj_breakable</object>
+    <object>objects\obj_moving_block</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
     <room>rooms\room0</room>
     <room>rooms\room3</room>
-    <room>rooms\rm_no_art</room>
-    <room>rooms\rm_art</room>
   </rooms>
-  <constants number="3">
-    <constant name="gee">"build3"</constant>
-    <constant name="GM_build_date">41881.2400783333</constant>
+  <constants number="2">
+    <constant name="GM_build_date">41882.1236409606</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

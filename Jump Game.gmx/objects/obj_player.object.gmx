@@ -29,30 +29,19 @@
 just_shot = false;
 image_speed = 0.1;
 flip = false;
-//Physics objects must call the parent object's create event
-//to initialize physics variables.  Here we are calling it
-//BEFORE we initialize the player's stats because obj_moveable
-//also defines S_SLOPE_SLOW for itself and we want to
-//overwrite the value of it with one specifically for obj_player
+
 event_inherited();
 
-//Here some player stats are defined (so they can be easily
-//tweaked if needed).
 S_GRAVITY       = 0.5;      //Accel. due to gravity (pixels/step*step)
 S_RUN_ACCEL     = 0.042;      //Accel. from running on ground (pixels/step*step)
-S_RUN_FRIC      = 0.06;      //Friction on the ground (pixels/step*step)
+S_RUN_FRIC      = 0.08;      //Friction on the ground (pixels/step*step)
 S_AIR_ACCEL     = 0.1;      //Accel. from running in the air (pixels/step*step)
 S_AIR_FRIC      = 0.01;      //Friction in the air (pixels/step*step)
 S_JUMP_SPEED    = -5.1;
-//S_DJUMP_SPEED   = -4.5;       //Double jump speed
 S_MAX_H         = 1.6;        //Max horizontal speed
 S_MAX_V         = 5;        //Max vertical speed
 S_SLOPE_SLOW    = 0.05;      //Decceleration while climbing slopes
-
 S_JUMP_HOLD     = 0.3;
-
-//Whether the player can currently double jump
-//candj = true;   
 
 gamepad_set_axis_deadzone(0,0.2);
 </string>
@@ -77,13 +66,15 @@ gamepad_set_axis_deadzone(0,0.2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if (y&gt;room_height) {move_to_start();}
+// DEBUG STUFF
 if (keyboard_check_pressed(ord('R'))){game_restart();}
 if (keyboard_check_pressed(ord('A'))){x--;}
 if (keyboard_check_pressed(ord('D'))){x++;}
 if (keyboard_check_pressed(ord('W'))){y--;}
 if (keyboard_check_pressed(ord('S'))){y++;}
 
+// ACCEL AND FRICTION
 var accel, fric;
 if (on_ground) {
     accel = S_RUN_ACCEL;
@@ -93,6 +84,7 @@ if (on_ground) {
     fric = S_AIR_FRIC;
 }
 
+// FIREBALL SYSTEM
 if (gamepad_button_check_pressed(0,gp_face3) &amp;&amp; instance_number(obj_fireball) &lt; 3) {
     var fb = instance_create(x,y ,obj_fireball);
     with (fb) {
@@ -100,7 +92,6 @@ if (gamepad_button_check_pressed(0,gp_face3) &amp;&amp; instance_number(obj_fire
         vspd = 1.1 * other.vspd;
     }
 }
-
 if (abs(gamepad_axis_value(0,gp_axisrh)) &gt; 0.5 || abs(gamepad_axis_value(0,gp_axisrv)) &gt; 0.5) {
     if (!just_shot &amp;&amp; instance_number(obj_fireball) &lt; 3) {
     just_shot = true;
@@ -117,17 +108,16 @@ else {
 }
 
 
+// HOLD RUNNING
 var my_max = S_MAX_H;
-//if (keyboard_check(vk_down)) {
 if (gamepad_button_check(0,gp_face3) || gamepad_button_value(0,gp_shoulderrb) &gt; 0) {
     my_max = S_MAX_H*2;
-    image_speed*=2;
 }
 else {
     my_max = S_MAX_H;
 }
 
-//if (keyboard_check(vk_right)) {
+// MOVEMENT
 if (gamepad_axis_value(0,gp_axislh) &gt; 0) {
     //Running right
     flip = false;
@@ -138,7 +128,6 @@ if (gamepad_axis_value(0,gp_axislh) &gt; 0) {
         
     hspd = approach( hspd, my_max, accel ); 
 
-//} else if (keyboard_check(vk_left)) {
 } else if (gamepad_axis_value(0,gp_axislh) &lt; 0) {
     //Running left
     flip = true    
@@ -153,61 +142,44 @@ if (gamepad_axis_value(0,gp_axislh) &gt; 0) {
     hspd = approach( hspd, 0, fric );
 }
 
+// JUMP STUFF
 if (on_ground) {
-
     //Jumping
-    //if (keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_up)) {
     if (gamepad_button_check_pressed(0,gp_face1)) {
         vspd = S_JUMP_SPEED;
     }
 } else {
     //Gravity
     vspd = approach( vspd, S_MAX_V, S_GRAVITY );
-
-    //if (keyboard_check(vk_space) || keyboard_check(vk_up)) {
     if (gamepad_button_check(0,gp_face1)) {
         vspd -= S_JUMP_HOLD;
     }
 }
 if (!on_ground) {
-
-    // this whole bullscrap is suspect...
-    // mario style head hittin' handlin' (vspd is neg)
-    // maybe there is a generic solution but this seems fast+safe OH GOD I MEAN SLOW
-    //if (vspd &lt; 0 &amp;&amp; place_meeting(x,y + vspd,obj_floor))
-
-     
-    
     if (abs(hspd) &lt; 1 &amp;&amp; vspd &lt; 0 &amp;&amp; place_meeting_top(0,vspd,obj_floor))
     {   
-        //if (!place_meeting(x-1,y+ vspd,obj_floor)) {
         if (!place_meeting_top(-1,vspd,obj_floor)) {
             x=x-1;
             hspd = 0;
         }
-        //else if (!place_meeting(x+1,y+ vspd, obj_floor)) {
         else if (!place_meeting_top(1,vspd, obj_floor)) {
             x = x+1;
             hspd = 0;
         }
         else {
-            //if (!place_meeting(x-2,y+ vspd,obj_floor)) {
             if (!place_meeting_top(-2,vspd,obj_floor)) {
                 x=x-2;
                 hspd = 0;
             }
-            //else if (!place_meeting(x+2,y+ vspd, obj_floor)) {
             else if (!place_meeting_top(2,vspd, obj_floor)) {
                 x = x+2;
                 hspd = 0;
             }
             else  {
-                //if (!place_meeting(x-3,y+ vspd,obj_floor)) {
                 if (!place_meeting_top(-3,vspd,obj_floor)) {
                     x=x-3;
                     hspd = 0;
                 }
-                //else if (!place_meeting(x+3,y+ vspd, obj_floor)) {
                 else if (!place_meeting_top(3,vspd, obj_floor)) {
                     x = x+3;
                     hspd = 0;
@@ -217,17 +189,12 @@ if (!on_ground) {
             }
         }
     }
-    
-    
 }
 
-// This is just a bug that looks like a feature...
-//if (vspd&lt;=0 &amp;&amp; place_meeting(x,y + vspd-1,obj_floor)) {
-if (!on_ground &amp;&amp; place_meeting_top(0,-1,obj_floor)) {
+// BUST BLOCKS
+if (!on_ground &amp;&amp; place_meeting_top(0,-1,obj_breakable)) {
     var inst;
-    
-    //inst = instance_place(x+hspd,y+vspd -4 , obj_floor);
-    inst = instance_place_top(0,-1,obj_floor);
+    inst = instance_place_top(0,-1,obj_breakable);
         with (inst) {
             instance_destroy();
             }
@@ -235,6 +202,7 @@ if (!on_ground &amp;&amp; place_meeting_top(0,-1,obj_floor)) {
 
 }
 
+// ANIMATION SPEED
 image_speed = abs(hspd) / 7;
 </string>
           </argument>

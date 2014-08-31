@@ -58,9 +58,11 @@ S_SLOPE_SLOW    = 0.05;      //Decceleration while climbing slopes
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (y &gt; room_height) {instance_destroy();}
-
-if (chance(100)) {hspd = random_range(-0.1,0.1);}
+            <string>event_inherited();
+fall_off_world_destroyer();
+vspd = approach( vspd, S_MAX_V, S_GRAVITY );
+if (!active) return 0;
+if (chance(100)) {hspd = random_range(-1,1);}
 
 // TODO: too many collision checks. move into the player.
 // MAYBE
@@ -68,16 +70,20 @@ if (chance(100)) {hspd = random_range(-0.1,0.1);}
 // If it need be, change origin after.
 // implenting fast code is important.
 
-//Gravity
-vspd = approach( vspd, S_MAX_V, S_GRAVITY );
-    
+if(place_meeting(x,y+1, obj_enemy)) {
+    vspd = 0;
+}
+
+if (place_meeting(x + hspd,y,obj_enemy)) {
+    hspd = hspd * -1;
+}
+
 //
 var inst;
 inst = instance_place_bottom(0,0,obj_player);
 if (inst != noone) {
     with (inst) {
-        x = xstart;
-        y = ystart; 
+        move_to_start();
     }
 }
 
@@ -97,32 +103,23 @@ if (inst != noone) {
     }
     else {
         with (inst) {
-            x = xstart;
-            y = ystart;
+            move_to_start();
         }
     }
-}
-
-if(place_meeting(x,y+1, obj_enemy)) {
-    vspd = 0;
-}
-
-if (place_meeting(x + hspd,y,obj_enemy)) {
-    hspd = hspd * -1;
 }
 
 //shimmy
 var a_inst;
 inst = instance_place(x,y,obj_enemy);
 if (inst != noone) {
-    move_away(inst,1);
+    move_away_forced(inst,1);
 }
 
 //shimmy
 var b_inst;
 inst = instance_place(x,y,obj_floor);
 if (inst != noone) {
-    move_away(inst,1);
+    move_away_forced(inst,1);
 }
 
 image_speed = abs(hspd)/ 10;

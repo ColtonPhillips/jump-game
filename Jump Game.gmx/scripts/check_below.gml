@@ -8,8 +8,6 @@
 //          AND
 //      b. there is not an obj_jumpthru inside it
 
-//return place_meeting( x, y+1, obj_floor ) 
-//    || (place_meeting( x, y+1, obj_jumpthru ) && !place_meeting( x, y, obj_jumpthru ));
-    
+
 return place_meeting_below(0, 1, obj_floor ) 
     || (place_meeting_below(0, 1, obj_jumpthru ) && !place_meeting_below(0, 0, obj_jumpthru ));    
