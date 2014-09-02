@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>test_h = 0;
+            <string>moving_block_flag_h = false;
+moving_block_flag_v = false;
 
 //This object will never actually be instantiated - it's just
 //a parent for all objects which will use the custom movement
@@ -76,11 +77,12 @@ sign_v = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Add to the counters, then get the h and v (pixels to move this step) from them.
+            <string>moving_block_flag_h = false;
+moving_block_flag_v = false;
+
+//Add to the counters, then get the h and v (pixels to move this step) from them.
 h_counter += hspd;
 v_counter += vspd;
-h_counter += test_h;
-test_h = 0;
 h = round( h_counter );
 v = round( v_counter );
 h_counter -= h;

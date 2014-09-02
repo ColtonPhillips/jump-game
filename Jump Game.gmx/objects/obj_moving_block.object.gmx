@@ -25,14 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>abc = 0;
 
 //copypaste of moveable.
 
 image_alpha = 1;
-
-test_h = 0;
-
 //This object will never actually be instantiated - it's just
 //a parent for all objects which will use the custom movement
 //system.
@@ -40,8 +37,8 @@ test_h = 0;
 S_SLOPE_SLOW = 0.5;     //Slow down while climbing slopes
 
 //This variables hold the actual speed the object is travelling at
-hspd = 1;
-vspd = 0;
+hspd = 0.1;
+vspd = 0.1;
 
 //These variables have their respective speeds added to them at each
 //step.  The object is moved based on these rounded, but the un-used
@@ -82,20 +79,13 @@ sign_v = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (hspd != 0) {hspd = 0.1;}
-var inst = instance_place_top(0,-1,obj_moveable);
-if (inst != noone &amp;&amp; inst.y - ((inst.bbox_bottom-inst.bbox_top)/2) &lt; y) {
-    inst.test_h=hspd;    
+            <string>if (hspd != 0) {hspd = 0.2;}
+abc++;
+if (vspd != 0) {
+    if (abc &gt; 100) {abc = 0; }
+    if (abc &gt; 50) { vspd = 0.1;}
+    else {vspd = -0.1;}
 }
-
-var ginst = instance_place_right(3,0,obj_player);
-if (ginst != noone) {   
-    if (hspd != 0) {
-        ginst.x+=1;
-    }
-    ginst.test_h=0;
-}
-
 // creates a bug if player is on two of these bad boys.
 // bug when jumping to the right of it.
 
@@ -105,8 +95,6 @@ if (ginst != noone) {
 //Add to the counters, then get the h and v (pixels to move this step) from them.
 h_counter += hspd;
 v_counter += vspd;
-h_counter += test_h;
-test_h = 0;
 h = round( h_counter );
 v = round( v_counter );
 h_counter -= h;
@@ -124,12 +112,13 @@ slope = false;
 sign_h = sign(h);
 sign_v = sign(v);
 
+var fuck = obj_floor;
 // probably could re-write with place_meeting_left, etc.
 repeat (abs(h))
 {
-    if (place_meeting(x + sign_h, y, obj_floor))
+    if (place_meeting(x + sign_h, y, fuck))
     {
-        if (!place_meeting(x + sign_h, y - 1, obj_floor))
+        if (!place_meeting(x + sign_h, y - 1, fuck))
         {
             //Running up slopes
             y -= 1;
@@ -147,7 +136,7 @@ repeat (abs(h))
     {
         if (on_ground)
         {
-           if (!place_meeting(x + sign_h, y + 1, obj_floor) &amp;&amp; place_meeting(x + sign_h, y + 2, obj_floor))
+           if (!place_meeting(x + sign_h, y + 1, fuck) &amp;&amp; place_meeting(x + sign_h, y + 2, fuck))
                 y += 1;
         }
         x += sign_h;  
@@ -165,7 +154,7 @@ repeat (abs(v))
 {
     if (vspd &lt;= 0)
     {
-        if (place_meeting( x, y + sign_v, obj_floor))
+        if (place_meeting( x, y + sign_v, fuck))
         {
             collide = true;
             break;
@@ -186,6 +175,27 @@ repeat (abs(v))
 
 if (collide)
     event_perform( ev_other, ev_user1 );
+    
+    
+// THE SADNESS OF BADNESS
+var inst = instance_place_top(0,-2,obj_moveable);
+if (inst != noone &amp;&amp; inst.y - ((inst.bbox_bottom-inst.bbox_top)/2) &lt; y) {
+    if (!inst.moving_block_flag_h) {
+        inst.x+= h;
+        inst.moving_block_flag_h = true;
+    }
+    if (!inst.moving_block_flag_v) {
+        inst.y+= v;
+        inst.moving_block_flag_v = true;
+    }
+}
+
+var ginst = instance_place_right(1,0,obj_player);
+if (ginst != noone) {   
+    if (hspd != 0) {
+        ginst.x+=sign(hspd);
+    }
+}    
 </string>
           </argument>
         </arguments>
