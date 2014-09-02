@@ -75,10 +75,18 @@ while (placer &gt; 0) {
                     var _left = (((shifted_gid-1) mod image_width))*tile_width;
                     var _top = ((shifted_gid-1) div image_width)*tile_height;
                     if (chance(2)) {
-                        instance_create(chunkx+j*map_tile_width,i*map_tile_height,obj_breakable);
+                        var inst = instance_create(chunkx+j*map_tile_width,i*map_tile_height,obj_breakable);
+                        with (inst) {
+                            image_xscale = tile_width / 16;
+                            image_yscale = tile_height / 16;
+                        }
                     }
                     else {
-                        instance_create(chunkx+j*map_tile_width,i*map_tile_height,obj_floor);
+                        var inst = instance_create(chunkx+j*map_tile_width,i*map_tile_height,obj_floor);
+                        with (inst) {
+                            image_xscale = tile_width / 16;
+                            image_yscale = tile_height / 16;
+                        }
                     }
                     
                     tile_add(tile_asset_name,_left,_top,tile_width,tile_height,chunkx+j*map_tile_width,i*map_tile_height,0);

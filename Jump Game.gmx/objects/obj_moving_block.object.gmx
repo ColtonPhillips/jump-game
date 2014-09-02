@@ -25,16 +25,47 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// and as the problems start to arise. it really is gross that i am using 
-// inheritance. i dunno man.
+            <string>
+
+//copypaste of moveable.
 
 image_alpha = 1;
+
+test_h = 0;
+
+//This object will never actually be instantiated - it's just
+//a parent for all objects which will use the custom movement
+//system.
+
+S_SLOPE_SLOW = 0.5;     //Slow down while climbing slopes
+
+//This variables hold the actual speed the object is travelling at
+hspd = 1;
+vspd = 0;
+
+//These variables have their respective speeds added to them at each
+//step.  The object is moved based on these rounded, but the un-used
+//fraction of a pixel is saved for next step, so objects with a
+//speed less than 1 will still gradually move.
+h_counter = 0;
+v_counter = 0;
+
+//This variables holds whether the object is sitting on solid ground.
+on_ground = false;
+
+// used in end step
+h = 0;
+v = 0;
+slope = false;
+collide = false;
+sign_h = 1;
+sign_v = 1;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,16 +82,180 @@ image_alpha = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x += 0.1;
+            <string>if (hspd != 0) {hspd = 0.1;}
 var inst = instance_place_top(0,-1,obj_moveable);
 if (inst != noone &amp;&amp; inst.y - ((inst.bbox_bottom-inst.bbox_top)/2) &lt; y) {
-    inst.x+= 0.1;
+    inst.test_h=hspd;    
 }
 
-inst = instance_place_right(1,0,obj_moveable);
-if (inst != noone) {
-    inst.x+= 0.1;
+var ginst = instance_place_right(3,0,obj_player);
+if (ginst != noone) {   
+    if (hspd != 0) {
+        ginst.x+=1;
+    }
+    ginst.test_h=0;
 }
+
+// creates a bug if player is on two of these bad boys.
+// bug when jumping to the right of it.
+
+// apparently i need to do a hspd_carry type of deal to add a constant little
+// nudgin. if I just plus equals i accelerate.
+
+//Add to the counters, then get the h and v (pixels to move this step) from them.
+h_counter += hspd;
+v_counter += vspd;
+h_counter += test_h;
+test_h = 0;
+h = round( h_counter );
+v = round( v_counter );
+h_counter -= h;
+v_counter -= v;
+
+//This loop will move the object based on hspd.  The object will never
+//actually collide with a floor object, because this loop (and the next one for vspd) 
+//will always position it right next to them without overlapping.  If the
+//object collides with a wall, it will call one of two events:
+// User Event 0 - if the collision is horizontal
+// User Event 1 - if the collision is vertical
+collide = false;
+slope = false;
+
+sign_h = sign(h);
+sign_v = sign(v);
+
+// probably could re-write with place_meeting_left, etc.
+repeat (abs(h))
+{
+    if (place_meeting(x + sign_h, y, obj_floor))
+    {
+        if (!place_meeting(x + sign_h, y - 1, obj_floor))
+        {
+            //Running up slopes
+            y -= 1;
+            x += sign_h;
+            slope = true;
+        }
+        else
+        {
+            //Hit a wall
+            collide = true;
+            break;
+        }
+    }
+    else
+    {
+        if (on_ground)
+        {
+           if (!place_meeting(x + sign_h, y + 1, obj_floor) &amp;&amp; place_meeting(x + sign_h, y + 2, obj_floor))
+                y += 1;
+        }
+        x += sign_h;  
+    }
+}
+
+if (collide)
+    event_perform(ev_other, ev_user0);
+    
+if (slope)
+    hspd = approach(hspd, 0, S_SLOPE_SLOW);
+    
+collide = false;
+repeat (abs(v))
+{
+    if (vspd &lt;= 0)
+    {
+        if (place_meeting( x, y + sign_v, obj_floor))
+        {
+            collide = true;
+            break;
+        }
+        else {
+            y += sign_v;
+        }
+    }
+    else if (check_below())
+    {
+        collide = true;
+        break;
+    }
+    else {
+        y += sign_v;
+    }
+}
+
+if (collide)
+    event_perform( ev_other, ev_user1 );
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>on_ground = check_below();
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>vspd = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hspd = 0;
 </string>
           </argument>
         </arguments>

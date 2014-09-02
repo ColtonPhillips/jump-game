@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="2" name="datafiles">
-    <datafiles number="2" name="levels">
+  <datafiles number="3" name="datafiles">
+    <datafiles number="3" name="levels">
       <datafile>
         <name>level3.json</name>
         <exists>-1</exists>
@@ -21,6 +21,23 @@
           </Config>
         </ConfigOptions>
         <filename>level3.json</filename>
+      </datafile>
+      <datafile>
+        <name>level4.json</name>
+        <exists>-1</exists>
+        <size>3317</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>level4.json</filename>
       </datafile>
     </datafiles>
   </datafiles>
@@ -46,6 +63,7 @@
       <background>background\bg_277</background>
       <background>background\bg_rocks</background>
     </backgrounds>
+    <background>background\bg_392</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -99,6 +117,7 @@
     <object>objects\obj_floor</object>
     <object>objects\obj_jumpthru</object>
     <object>objects\obj_moveable</object>
+    <object>objects\obj_moving_block</object>
     <object>objects\obj_player</object>
     <object>objects\obj_slopeL</object>
     <object>objects\obj_slopeL2</object>
@@ -109,7 +128,6 @@
     <object>objects\obj_fireball</object>
     <object>objects\obj_tile_adder</object>
     <object>objects\obj_breakable</object>
-    <object>objects\obj_moving_block</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
@@ -117,7 +135,7 @@
     <room>rooms\room3</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41882.1236409606</constant>
+    <constant name="GM_build_date">41884.0523214005</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

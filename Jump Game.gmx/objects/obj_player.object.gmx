@@ -204,6 +204,16 @@ if (!on_ground &amp;&amp; place_meeting_top(0,-1,obj_breakable)) {
 
 // ANIMATION SPEED
 image_speed = abs(hspd) / 7;
+
+// CRUSHED
+if (place_meeting_left(0,0,obj_floor) &amp;&amp; place_meeting_right(0,0,obj_floor)) {
+    move_to_start();
+}
+
+var chinst = instance_place(x,y,obj_moving_block);
+if (chinst != noone) {
+    move_away_forced(chinst,1);
+}
 </string>
           </argument>
         </arguments>
@@ -271,7 +281,6 @@ image_speed = abs(hspd) / 7;
             <kind>1</kind>
             <string>//You've collided with a wall vertically, so stop moving vertically!
 vspd = 0;
-
 </string>
           </argument>
         </arguments>
@@ -349,7 +358,7 @@ if (!on_ground) image_index = 1;
 
 if (!flip) draw_sprite_ext(spr_larry,image_index,x,y,1,1,0,c_white,1);
 else draw_sprite_ext(spr_larry,image_index,x,y,-1,1,0,c_white,1);
-//draw_bounding_box();
+draw_bounding_box();
 </string>
           </argument>
         </arguments>

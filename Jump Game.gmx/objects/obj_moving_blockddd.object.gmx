@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_floor</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,13 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_alpha = 0;
+            <string>// and as the problems start to arise. it really is gross that i am using 
+// inheritance. i dunno man.
+
+image_alpha = 1;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="1" enumb="0">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,8 +51,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// may need to be altered for slopes.
-tile_layer_delete_at(0,x,y);
+            <string>x += 0.1;
+var inst = instance_place_top(0,-1,obj_moveable);
+if (inst != noone &amp;&amp; inst.y - ((inst.bbox_bottom-inst.bbox_top)/2) &lt; y) {
+    //inst.x+= 0.1;
+    //inst.h_counter+=0.1;
+    inst.test_h+=0.1;    
+}
+
+inst = instance_place_right(1,0,obj_moveable);
+if (inst != noone) {
+    //inst.x+= 0.1;
+    inst.h_counter+=0.1;
+}
+
+// creates a bug if player is on two of these bad boys.
+// bug when jumping to the right of it.
+
+// apparently i need to do a hspd_carry type of deal to add a constant little
+// nudgin. if I just plus equals i accelerate.
 </string>
           </argument>
         </arguments>
