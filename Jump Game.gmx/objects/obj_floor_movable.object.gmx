@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_floor</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,13 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moving_block_flag_h = false;
-moving_block_flag_v = false;
+            <string>// THIS IS COPY PASTE COWBOY CODE
 
-//This object will never actually be instantiated - it's just
-//a parent for all objects which will use the custom movement
-//system.
-
+collider = obj_floor;
 S_SLOPE_SLOW = 0.5;     //Slow down while climbing slopes
 
 //This variables hold the actual speed the object is travelling at
@@ -77,10 +73,7 @@ sign_v = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>moving_block_flag_h = false;
-moving_block_flag_v = false;
-
-//Add to the counters, then get the h and v (pixels to move this step) from them.
+            <string>//Add to the counters, then get the h and v (pixels to move this step) from them.
 h_counter += hspd;
 v_counter += vspd;
 h = round( h_counter );
@@ -103,9 +96,9 @@ sign_v = sign(v);
 // probably could re-write with place_meeting_left, etc.
 repeat (abs(h))
 {
-    if (place_meeting(x + sign_h, y, obj_floor))
+    if (place_meeting(x + sign_h, y, collider))
     {
-        if (!place_meeting(x + sign_h, y - 1, obj_floor))
+        if (!place_meeting(x + sign_h, y - 1, collider))
         {
             //Running up slopes
             y -= 1;
@@ -123,7 +116,7 @@ repeat (abs(h))
     {
         if (on_ground)
         {
-           if (!place_meeting(x + sign_h, y + 1, obj_floor) &amp;&amp; place_meeting(x + sign_h, y + 2, obj_floor))
+           if (!place_meeting(x + sign_h, y + 1, collider) &amp;&amp; place_meeting(x + sign_h, y + 2, collider))
                 y += 1;
         }
         x += sign_h;  
@@ -141,7 +134,7 @@ repeat (abs(v))
 {
     if (vspd &lt;= 0)
     {
-        if (place_meeting( x, y + sign_v, obj_floor))
+        if (place_meeting( x, y + sign_v, collider))
         {
             collide = true;
             break;
@@ -162,6 +155,7 @@ repeat (abs(v))
 
 if (collide)
     event_perform( ev_other, ev_user1 );
+
 </string>
           </argument>
         </arguments>
@@ -185,7 +179,52 @@ if (collide)
           <argument>
             <kind>1</kind>
             <string>on_ground = check_below();
-
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>vspd = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>hspd = 0;
 </string>
           </argument>
         </arguments>

@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
-  <parentName>obj_moveable</parentName>
+  <parentName>obj_movable</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -66,16 +66,7 @@ gamepad_set_axis_deadzone(0,0.2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (y&gt;room_height) {move_to_start();}
-// DEBUG STUFF
-if (keyboard_check_pressed(ord('R'))){game_restart();}
-if (keyboard_check_pressed(ord('A'))){x--;}
-if (keyboard_check_pressed(ord('D'))){x++;}
-if (keyboard_check_pressed(ord('W'))){y--;}
-if (keyboard_check_pressed(ord('S'))){y++;}
-
-// ACCEL AND FRICTION
-var accel, fric;
+            <string>// ACCEL AND FRICTION
 if (on_ground) {
     accel = S_RUN_ACCEL;
     fric = S_RUN_FRIC;
@@ -83,6 +74,15 @@ if (on_ground) {
     accel = S_AIR_ACCEL;
     fric = S_AIR_FRIC;
 }
+
+if (y &gt; room_height) { move_to_start();}
+
+// DEBUG STUFF
+if (keyboard_check_pressed(ord('R'))){game_restart();}
+if (keyboard_check_pressed(ord('A'))){x--;}
+if (keyboard_check_pressed(ord('D'))){x++;}
+if (keyboard_check_pressed(ord('W'))){y--;}
+if (keyboard_check_pressed(ord('S'))){y++;}
 
 // FIREBALL SYSTEM
 if (gamepad_button_check_pressed(0,gp_face3) &amp;&amp; instance_number(obj_fireball) &lt; 3) {
@@ -206,6 +206,7 @@ if (!on_ground &amp;&amp; place_meeting_top(0,-1,obj_breakable)) {
 image_speed = abs(hspd) / 7;
 
 // CRUSHED
+// moving blocks
 // BUG just being placed into a box ( standing on it) will kill you
 //if (place_meeting_left(0,0,obj_floor) &amp;&amp; place_meeting_right(0,0,obj_floor)) {
 //    move_to_start();
@@ -282,6 +283,7 @@ if (chinst != noone) {
             <kind>1</kind>
             <string>//You've collided with a wall vertically, so stop moving vertically!
 vspd = 0;
+print ("player collide wall vertically");
 </string>
           </argument>
         </arguments>
@@ -326,6 +328,7 @@ vspd = 0;
             <kind>1</kind>
             <string>//You've collided with a wall horizontally, so stop moving horizontally!
 hspd = 0;
+print ("player collide wall horizontally");
 </string>
           </argument>
         </arguments>
@@ -359,7 +362,6 @@ if (!on_ground) image_index = 1;
 
 if (!flip) draw_sprite_ext(spr_larry,image_index,x,y,1,1,0,c_white,1);
 else draw_sprite_ext(spr_larry,image_index,x,y,-1,1,0,c_white,1);
-draw_bounding_box();
 </string>
           </argument>
         </arguments>

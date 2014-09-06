@@ -1,4 +1,5 @@
-if (irandom_range(1,argument0) == 1) {
+/*if (irandom_range(1,argument0) == 1) {
     return true;
 }
-return false;
+return false; */
+return (random(argument0)<1)

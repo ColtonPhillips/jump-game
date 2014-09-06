@@ -53,6 +53,8 @@
     <sprite>sprites\spr_larry</sprite>
     <sprite>sprites\spr_goomba</sprite>
     <sprite>sprites\spr_fireball</sprite>
+    <sprite>sprites\spr_jumppad</sprite>
+    <sprite>sprites\spr_falling_platform</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_1</background>
@@ -80,6 +82,8 @@
     <scripts name="collide">
       <script>scripts\instance_place_top.gml</script>
       <script>scripts\instance_place_right.gml</script>
+      <script>scripts\instance_place_left.gml</script>
+      <script>scripts\instance_place_left_or_right.gml</script>
       <script>scripts\instance_place_bottom.gml</script>
       <script>scripts\place_meeting_top.gml</script>
       <script>scripts\place_meeting_below.gml</script>
@@ -113,21 +117,35 @@
     <font>fonts\fnt_debug</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_debug</object>
-    <object>objects\obj_floor</object>
-    <object>objects\obj_jumpthru</object>
-    <object>objects\obj_moveable</object>
-    <object>objects\obj_moving_block</object>
-    <object>objects\obj_player</object>
-    <object>objects\obj_slopeL</object>
-    <object>objects\obj_slopeL2</object>
-    <object>objects\obj_slopeR</object>
-    <object>objects\obj_slopeR2</object>
-    <object>objects\obj_goomba</object>
-    <object>objects\obj_enemy</object>
-    <object>objects\obj_fireball</object>
-    <object>objects\obj_tile_adder</object>
-    <object>objects\obj_breakable</object>
+    <object>objects\obj_collidable</object>
+    <object>objects\obj_movable</object>
+    <objects name="floor">
+      <object>objects\obj_floor</object>
+      <object>objects\obj_slopeL</object>
+      <object>objects\obj_slopeL2</object>
+      <object>objects\obj_slopeR</object>
+      <object>objects\obj_slopeR2</object>
+      <object>objects\obj_jumpthru</object>
+      <object>objects\obj_moving_block</object>
+      <object>objects\obj_breakable</object>
+      <object>objects\obj_falling_platform</object>
+      <object>objects\obj_floor_movable</object>
+    </objects>
+    <objects name="enemy">
+      <object>objects\obj_enemy</object>
+      <object>objects\obj_goomba</object>
+    </objects>
+    <objects name="special">
+      <object>objects\obj_fireball</object>
+      <object>objects\obj_jumppad</object>
+    </objects>
+    <objects name="debug">
+      <object>objects\obj_debug</object>
+      <object>objects\obj_tile_adder</object>
+    </objects>
+    <objects name="player">
+      <object>objects\obj_player</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
@@ -135,7 +153,7 @@
     <room>rooms\room3</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41884.2221104167</constant>
+    <constant name="GM_build_date">41888.2698101273</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
