@@ -81,6 +81,7 @@
     </scripts>
     <scripts name="collide">
       <script>scripts\instance_place_top.gml</script>
+      <script>scripts\instance_place_top_shifted.gml</script>
       <script>scripts\instance_place_right.gml</script>
       <script>scripts\instance_place_left.gml</script>
       <script>scripts\instance_place_left_or_right.gml</script>
@@ -112,6 +113,8 @@
       <script>scripts\included_file_to_string.gml</script>
     </scripts>
     <script>scripts\fall_off_world_destroyer.gml</script>
+    <script>scripts\moving_right.gml</script>
+    <script>scripts\facing_me.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
@@ -153,7 +156,7 @@
     <room>rooms\room3</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41888.2698101273</constant>
+    <constant name="GM_build_date">41889.207691169</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>

@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// THIS IS COPY PASTE COWBOY CODE
+            <string>facing_right = true;
+
+// THIS IS COPY PASTE COWBOY CODE
 
 collider = obj_floor;
 S_SLOPE_SLOW = 0.5;     //Slow down while climbing slopes
@@ -156,6 +158,12 @@ repeat (abs(v))
 if (collide)
     event_perform( ev_other, ev_user1 );
 
+    
+    
+// i dunno maybe this is just plain wrong
+// has to be in end step and i dunno why
+if (x-xprevious &gt; 0) { facing_right = true; }
+if (x-xprevious &lt; 0) { facing_right = false; }
 </string>
           </argument>
         </arguments>

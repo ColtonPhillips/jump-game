@@ -102,7 +102,8 @@ inst = instance_place_top(0,0,obj_player);
 if (inst != noone) {
     if (inst.y &lt; y - sprite_height/2) {
         with (inst) {
-            if (vspd &lt; 0.2) {vspd = -4;}
+        // TODO think hard about this. eh.
+            if (lastvspd &lt; 4) {vspd = -4;}
             vspd = -1*abs(vspd);
     }
         

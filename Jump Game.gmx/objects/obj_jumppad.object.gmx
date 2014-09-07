@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_movable</parentName>
+  <parentName>obj_floor_movable</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -31,10 +31,9 @@
 //tweaked if needed).
 S_GRAVITY       = 0.2;      //Accel. due to gravity (pixels/step*step)
 S_RUN_FRIC      = 0.04;      //Friction on the ground (pixels/step*step)
-S_MAX_H         = 1.6;        //Max horizontal speed
-S_MAX_V         = 4;        //Max vertical speed
 S_SLOPE_SLOW    = 0.05;      //Decceleration while climbing slopes
-
+S_MAX_H         = 1.6;        //Max horizontal speed
+S_MAX_V         = 5;        //Max vertical speed
 </string>
           </argument>
         </arguments>
@@ -57,66 +56,28 @@ S_SLOPE_SLOW    = 0.05;      //Decceleration while climbing slopes
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Gravity
+            <string>
+//I may want to change this to a moveable floor. Dunno.
+
+//Gravity
 vspd = approach( vspd, S_MAX_V, S_GRAVITY );
 
-var inst = instance_place_top(0,-1,obj_movable);
+var inst = instance_place_top_shifted(0,-1,-5,obj_movable);
 if (inst != noone) {
-    inst.vspd = -7; 
+    inst.vspd = -7;
 }
 inst = instance_place_left_or_right(1,obj_movable);
 if (inst != noone) {
-    hspd += inst.lasthspd;
+    if (facing_me(inst)) {
+        hspd += inst.lasthspd;
+    }
 }
 
 fall_off_world_destroyer();
 hspd = approach( hspd, 0, S_RUN_FRIC);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="11">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>vspd = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>hspd = 0;
+
+if (!facing_right) {vsdp = -100; }
+
 </string>
           </argument>
         </arguments>

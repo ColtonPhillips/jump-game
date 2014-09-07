@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>collider = obj_floor;
+            <string>facing_right = true;
+
+collider = obj_floor;
 
 moving_block_flag_h = false;
 moving_block_flag_v = false;
@@ -173,6 +175,12 @@ repeat (abs(v))
 
 if (collide)
     event_perform( ev_other, ev_user1 );
+    
+    
+    // has to be in end step and i dunno why
+// not precise enough for players but prolly good enough for others.
+if (x-xprevious &gt; 0) { gaying_right = true; }
+if (x-xprevious &lt; 0) { gaying_right = false; }
 </string>
           </argument>
         </arguments>
@@ -198,6 +206,10 @@ if (collide)
             <string>on_ground = check_below();
 lastvspd = vspd;
 lasthspd = hspd;
+
+// i dunno maybe this is just plain wrong
+if (x-xprevious &gt; 0) { facing_right = true; }
+if (x-xprevious &lt; 0) { facing_right = false; }
 </string>
           </argument>
         </arguments>

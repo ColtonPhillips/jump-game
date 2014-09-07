@@ -28,7 +28,7 @@
             <string>chince_flag = true;
 just_shot = false;
 image_speed = 0.1;
-flip = false;
+facing_right = true;
 
 event_inherited();
 
@@ -120,7 +120,7 @@ else {
 // MOVEMENT
 if (gamepad_axis_value(0,gp_axislh) &gt; 0) {
     //Running right
-    flip = false;
+    facing_right = true;
     
     //First add friction if currently running left
     if (hspd &lt; 0)
@@ -130,7 +130,7 @@ if (gamepad_axis_value(0,gp_axislh) &gt; 0) {
 
 } else if (gamepad_axis_value(0,gp_axislh) &lt; 0) {
     //Running left
-    flip = true    
+    facing_right = false;    
     //First add friction if currently running right
     if (hspd &gt; 0)
         hspd = approach( hspd, 0, fric );
@@ -360,7 +360,7 @@ else {
 }
 if (!on_ground) image_index = 1;
 
-if (!flip) draw_sprite_ext(spr_larry,image_index,x,y,1,1,0,c_white,1);
+if (facing_right) draw_sprite_ext(spr_larry,image_index,x,y,1,1,0,c_white,1);
 else draw_sprite_ext(spr_larry,image_index,x,y,-1,1,0,c_white,1);
 </string>
           </argument>
