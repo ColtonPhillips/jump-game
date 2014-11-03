@@ -25,8 +25,11 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>facing_right = true;
+            <string>//BUG 
+// lasthspd and hspd are both zero upon hitting a jumppad (wall)
 
+facing_right = true;
+collider_id = noone;
 collider = obj_floor;
 
 moving_block_flag_h = false;
@@ -93,89 +96,7 @@ sign_v = 1;
             <string>moving_block_flag_h = false;
 moving_block_flag_v = false;
 
-//Add to the counters, then get the h and v (pixels to move this step) from them.
-h_counter += hspd;
-v_counter += vspd;
-h = round( h_counter );
-v = round( v_counter );
-h_counter -= h;
-v_counter -= v;
-
-//This loop will move the object based on hspd.  The object will never
-//actually collide with a floor object, because this loop (and the next one for vspd) 
-//will always position it right next to them without overlapping.  If the
-//object collides with a wall, it will call one of two events:
-// User Event 0 - if the collision is horizontal
-// User Event 1 - if the collision is vertical
-collide = false;
-slope = false;
-
-sign_h = sign(h);
-sign_v = sign(v);
-
-// probably could re-write with place_meeting_left, etc.
-repeat (abs(h))
-{
-    if (place_meeting(x + sign_h, y, collider))
-    {
-        if (!place_meeting(x + sign_h, y - 1, collider))
-        {
-            //Running up slopes
-            y -= 1;
-            x += sign_h;
-            slope = true;
-        }
-        else
-        {
-            //Hit a wall
-            collide = true;
-            break;
-        }
-    }
-    else
-    {
-        if (on_ground)
-        {
-           if (!place_meeting(x + sign_h, y + 1, collider) &amp;&amp; place_meeting(x + sign_h, y + 2, collider))
-                y += 1;
-        }
-        x += sign_h;  
-    }
-}
-
-if (collide)
-    event_perform(ev_other, ev_user0);
-    
-if (slope)
-    hspd = approach(hspd, 0, S_SLOPE_SLOW);
-    
-collide = false;
-repeat (abs(v))
-{
-    if (vspd &lt;= 0)
-    {
-        if (place_meeting( x, y + sign_v, collider))
-        {
-            collide = true;
-            break;
-        }
-        else {
-            y += sign_v;
-        }
-    }
-    else if (check_below())
-    {
-        collide = true;
-        break;
-    }
-    else {
-        y += sign_v;
-    }
-}
-
-if (collide)
-    event_perform( ev_other, ev_user1 );
-    
+move_and_collide();
     
     // has to be in end step and i dunno why
 // not precise enough for players but prolly good enough for others.
@@ -211,28 +132,6 @@ lasthspd = hspd;
 if (x-xprevious &gt; 0) { facing_right = true; }
 if (x-xprevious &lt; 0) { facing_right = false; }
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
           </argument>
         </arguments>
       </action>

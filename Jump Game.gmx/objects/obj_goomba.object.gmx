@@ -112,7 +112,6 @@ if (inst != noone) {
     else {
         with (inst) {
             move_to_start();
-            print ("special die");
         }
     }
 }

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check_pressed(ord('1'))) {
+            <string>if (keyboard_check_pressed(ord('1')) &amp;&amp; room_speed &gt;= 2) {
     room_speed /= 2;
 }
 
@@ -33,6 +33,29 @@ if (keyboard_check_pressed(ord('2'))) {
     room_speed *= 2;
     if (room_speed &gt; 60) {room_speed = 60;}
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="54">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(mouse_x,mouse_y,obj_jumppad);
 </string>
           </argument>
         </arguments>
@@ -109,7 +132,8 @@ if (keyboard_check_pressed(ord('2'))) {
     draw_text( _x, _y + 60, "v_counter:" );
     draw_text( _x + 80, _y + 60, string( obj_player.v_counter ) );  
     
-    
+    draw_text( _x, _y + 70, "fps:" );
+    draw_text( _x + 80, _y + 70, string( room_speed ) );      
 }
 </string>
           </argument>

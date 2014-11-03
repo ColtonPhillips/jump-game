@@ -55,6 +55,9 @@
     <sprite>sprites\spr_fireball</sprite>
     <sprite>sprites\spr_jumppad</sprite>
     <sprite>sprites\spr_falling_platform</sprite>
+    <sprite>sprites\spr_arrow</sprite>
+    <sprite>sprites\spr_ladder</sprite>
+    <sprite>sprites\spr_donut</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_1</background>
@@ -115,6 +118,7 @@
     <script>scripts\fall_off_world_destroyer.gml</script>
     <script>scripts\moving_right.gml</script>
     <script>scripts\facing_me.gml</script>
+    <script>scripts\move_and_collide.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_debug</font>
@@ -132,6 +136,7 @@
       <object>objects\obj_moving_block</object>
       <object>objects\obj_breakable</object>
       <object>objects\obj_falling_platform</object>
+      <object>objects\obj_donut_platform</object>
       <object>objects\obj_floor_movable</object>
     </objects>
     <objects name="enemy">
@@ -140,6 +145,7 @@
     </objects>
     <objects name="special">
       <object>objects\obj_fireball</object>
+      <object>objects\obj_arrow</object>
       <object>objects\obj_jumppad</object>
     </objects>
     <objects name="debug">
@@ -149,6 +155,7 @@
     <objects name="player">
       <object>objects\obj_player</object>
     </objects>
+    <object>objects\obj_ladder</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
@@ -156,7 +163,7 @@
     <room>rooms\room3</room>
   </rooms>
   <constants number="2">
-    <constant name="GM_build_date">41889.207691169</constant>
+    <constant name="GM_build_date">41907.129820463</constant>
     <constant name="GM_version">'1.0.0.0'</constant>
   </constants>
   <help>
